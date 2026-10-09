@@ -1,0 +1,35 @@
+{
+  "$schema": "https://open-design.ai/schemas/plugin.v1.json",
+  "specVersion": "1.0.0",
+  "name": "poporo-open-design",
+  "title": "Poporo Quimbaya Open Design Experience",
+  "title_i18n": {
+    "es": "Experiencia Open Design: Poporo Quimbaya",
+    "en": "Poporo Quimbaya Open Design Experience"
+  },
+  "version": "1.0.0",
+  "description": "Museum-grade 3D interactive presentation, open hardware CAD parametric models, and GitHub Actions CD for the Poporo Quimbaya.",
+  "description_i18n": {
+    "es": "Presentación 3D interactiva de calidad museográfica, modelos CAD paramétricos de hardware abierto y CD con GitHub Actions para el Poporo Quimbaya.",
+    "en": "Museum-grade 3D interactive presentation, open hardware CAD parametric models, and GitHub Actions CD for the Poporo Quimbaya."
+  },
+  "license": "Apache-2.0",
+  "tags": ["cultural-heritage", "3d-interactive", "cad-parametric", "open-hardware", "quimbaya-gold"],
+  "compat": {
+    "agentSkills": [
+      {
+        "path": "./SKILL.md"
+      }
+    ]
+  },
+  "od": {
+    "kind": "skill",
+    "taskKind": "new-generation",
+    "designSystem": {
+      "ref": "quimbaya-gold"
+    },
+    "entrypoints": {
+      "preview": "../../index.html"
+    }
+  }
+}

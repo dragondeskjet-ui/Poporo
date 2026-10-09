@@ -1,65 +1,64 @@
 /**
- * Poporo Quimbaya - Interactive 3D Parametric Engine & Dynamic Anatomy
- * Open Design Heritage Viewer
+ * Poporo Quimbaya - Interactive 3D Parametric Engine & UI Controls
+ * Compatible with nexu-io/open-design specifications
  */
 
-// Datos anatómicos interactivos
-const anatomyData = {
+// Desglose anatómico interactivo con terminología de curaduría y Open CAD
+const anatomyModules = {
   "sphere-up": {
     badge: "Módulo 01",
-    title: "Cuerpo Esférico Superior",
-    desc: "Representa la mitad superior de la curvatura simétrica inspirada en el fruto seco del totumo. Fundido en cera perdida con núcleo de arcilla y carbón. Actuaba como remate ceremonial y bóveda de equilibrio visual.",
+    title: "Cuerpo Esferoidal Superior",
+    desc: "Representa la mitad superior de la curvatura de revolución inspirada en el fruto botánico desecado del totumo. Fundido en cera perdida con núcleo de arcilla y carbón vegetal. Actuaba como remate ceremonial y bóveda de equilibrio visual.",
     spec1: "102 mm",
     spec2: "1.9 – 2.2 mm",
     spec3: "Cera perdida (núcleo refractario)",
-    spec4: "Sólido de revolución / NURBS"
+    spec4: "Sólido de revolución NURBS"
   },
   "waist": {
     badge: "Módulo 02",
-    title: "Cintura de Sujeción (Garganta)",
-    desc: "Zona central estrecha que brinda una sujeción ergonómica perfecta con una sola mano durante largas horas de deliberación comunitaria. Transmite el calor de la mano al metal sin enfriar el contenido interior.",
+    title: "Garganta / Cintura Central",
+    desc: "Zona central estrecha diseñada con una ergonomía palmar insuperable. Facilita la sujeción firme con una sola mano durante largas vigilias y debates sagrados, transmitiendo el calor corporal sin alterar el contenido alcalino interior.",
     spec1: "64 mm",
-    spec2: "2.4 mm (Refuerzo)",
-    spec3: "Fundición continua sin soldadura",
+    spec2: "2.4 mm (Refuerzo estructural)",
+    spec3: "Fundición continua sin juntas",
     spec4: "Punto de inflexión hiperbólico"
   },
   "sphere-down": {
     badge: "Módulo 03",
-    title: "Receptáculo Cuatripartito Inferior",
-    desc: "Cámara principal destinada al almacenamiento de cal obtenida de conchas marinas molidas o rocas calizas. Destaca por sus 4 lóbulos sutiles que representan los 4 puntos cardinales y dimensiones cósmicas.",
+    title: "Cuerpo Cuatripartito Inferior",
+    desc: "Cámara volumétrica principal concebida para almacenar cal dolomítica viva. Sus cuatro lóbulos simétricos materializan los cuatro puntos cardinales y dimensiones cósmicas de la mitología del Cauca Medio.",
     spec1: "114 mm",
     spec2: "2.0 mm",
-    spec3: "Tumbaga dorada al fuego",
-    spec4: "Lóbulos cuatridimensionales"
+    spec3: "Tumbaga con enriquecimiento superficial",
+    spec4: "Modulación tetralobular 3D"
   },
   "pedestal": {
     badge: "Módulo 04",
     title: "Pedestal Anular de Apoyo",
-    desc: "Base cónica truncada que confiere total estabilidad vertical cuando el poporo descansa sobre bancos ceremoniales o telares de algodón sagrado.",
+    desc: "Base anular con conicidad invertida que confiere un centro de gravedad bajo y equilibrio inamovible cuando reposa sobre telas sagradas o bancos ceremoniales de madera.",
     spec1: "68 mm",
     spec2: "2.3 mm",
-    spec3: "Vaciado por gravedad",
+    spec3: "Vaciado por gravedad y pulido abrasivo",
     spec4: "Base cónica paramétrica"
   },
   "pin": {
     badge: "Módulo 05",
     title: "Alfiler Ceremonial (Palillo)",
-    desc: "Vástago de oro puro que se introducía por la abertura para extraer cal y humedecer el mambe en la boca. Su remate estilizado refleja la conexión entre el mundo terrenal y los espíritus solares.",
+    desc: "Vástago de aleación dorada fina que se introduce por la abertura cenital para dosificar cal hacia el bolo de mambe. Rematado con cabezal globular que simboliza la energía solar fecundadora.",
     spec1: "240 mm (Longitud)",
     spec2: "3.2 mm (Diámetro)",
-    spec3: "Forja y cera perdida",
-    spec4: "Eje cilíndrico helicoidal"
+    spec3: "Forja y vaciado con cera perdida",
+    spec4: "Vástago cilíndrico helicoidal"
   }
 };
 
-// Inicialización de interactividad anatómica
 document.addEventListener("DOMContentLoaded", () => {
-  setupAnatomyButtons();
-  init3DParametricCanvas();
+  setupAnatomySelector();
+  initParametricViewer();
 });
 
-function setupAnatomyButtons() {
-  const buttons = document.querySelectorAll(".anatomy-btn");
+function setupAnatomySelector() {
+  const tabs = document.querySelectorAll(".anatomy-tab-btn");
   const badgeEl = document.getElementById("anatomy-badge");
   const titleEl = document.getElementById("anatomy-title");
   const descEl = document.getElementById("anatomy-desc");
@@ -68,13 +67,13 @@ function setupAnatomyButtons() {
   const spec3El = document.getElementById("anatomy-spec3");
   const spec4El = document.getElementById("anatomy-spec4");
 
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      buttons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
 
-      const targetKey = btn.getAttribute("data-target");
-      const data = anatomyData[targetKey];
+      const key = tab.getAttribute("data-target");
+      const data = anatomyModules[key];
       if (!data) return;
 
       badgeEl.textContent = data.badge;
@@ -89,70 +88,95 @@ function setupAnatomyButtons() {
 }
 
 // =========================================================================
-// MOTOR 3D PARAMÉTRICO BASADO EN CANVAS HTML5
-// Renderiza el Poporo Quimbaya matemáticamente con rotación, sombreado y wireframe
+// MOTOR 3D PARAMÉTRICO DE ALTA FIDELIDAD (CANVAS / OPEN CAD ENGINE)
 // =========================================================================
 
-function init3DParametricCanvas() {
+function initParametricViewer() {
   const canvas = document.getElementById("poporoCanvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
 
-  // Parámetros de render y estado
-  let renderMode = "gold"; // "gold", "wire", "xray"
+  // Estados de Render
+  let renderMode = "gold"; // 'gold', 'wire', 'xray'
   let autoRotate = true;
-  let angleY = 0.5;
-  let angleX = 0.15;
+  let angleY = 0.45;
+  let angleX = 0.12;
   let zoomScale = 1.0;
   let lightAngleDeg = 45;
   let wireResolution = 36;
 
-  // Interacción de arrastre con ratón
+  // Interacción táctil / ratón
   let isDragging = false;
-  let prevMouseX = 0;
-  let prevMouseY = 0;
+  let prevX = 0;
+  let prevY = 0;
 
-  // Controles UI
+  // Elementos UI
   const btnGold = document.getElementById("btn-mode-gold");
   const btnWire = document.getElementById("btn-mode-wire");
   const btnXray = document.getElementById("btn-mode-xray");
   const btnToggleRotate = document.getElementById("btn-toggle-rotate");
+  const rotateIcon = document.getElementById("rotateIcon");
+  const rotateText = document.getElementById("rotateText");
+  const btnResetView = document.getElementById("btn-reset-view");
+
   const sliderScale = document.getElementById("slider-scale");
   const sliderLight = document.getElementById("slider-light");
   const sliderWireDensity = document.getElementById("slider-wire-density");
 
-  btnGold.addEventListener("click", () => setMode("gold", btnGold));
-  btnWire.addEventListener("click", () => setMode("wire", btnWire));
-  btnXray.addEventListener("click", () => setMode("xray", btnXray));
+  const scaleReadout = document.getElementById("scaleReadout");
+  const lightReadout = document.getElementById("lightReadout");
+  const densityReadout = document.getElementById("densityReadout");
+  const hudPoly = document.getElementById("hudPoly");
 
-  function setMode(mode, btn) {
+  // Modos de Visualización
+  btnGold.addEventListener("click", () => switchMode("gold", btnGold, "Quad Mesh"));
+  btnWire.addEventListener("click", () => switchMode("wire", btnWire, "CAD Wireframe"));
+  btnXray.addEventListener("click", () => switchMode("xray", btnXray, "X-Ray Core"));
+
+  function switchMode(mode, btn, hudText) {
     renderMode = mode;
     [btnGold, btnWire, btnXray].forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
+    if (hudPoly) hudPoly.textContent = hudText;
   }
 
+  // Toggle Rotación
   btnToggleRotate.addEventListener("click", () => {
     autoRotate = !autoRotate;
-    btnToggleRotate.textContent = autoRotate ? "⏸ Pausar Giro" : "▶ Reanudar Giro";
+    rotateIcon.textContent = autoRotate ? "⏸" : "▶";
+    rotateText.textContent = autoRotate ? "Pausar Giro" : "Reanudar Giro";
   });
 
+  // Reset Cámara
+  btnResetView.addEventListener("click", () => {
+    angleY = 0.45;
+    angleX = 0.12;
+    zoomScale = 1.0;
+    sliderScale.value = 1.0;
+    scaleReadout.textContent = "1.0x";
+  });
+
+  // Sliders
   sliderScale.addEventListener("input", (e) => {
     zoomScale = parseFloat(e.target.value);
+    scaleReadout.textContent = `${zoomScale.toFixed(2)}x`;
   });
 
   sliderLight.addEventListener("input", (e) => {
     lightAngleDeg = parseFloat(e.target.value);
+    lightReadout.textContent = `${lightAngleDeg}°`;
   });
 
   sliderWireDensity.addEventListener("input", (e) => {
     wireResolution = parseInt(e.target.value, 10);
+    densityReadout.textContent = `${wireResolution} seg`;
   });
 
-  // Eventos de ratón para rotación 3D
+  // Drag Orbital
   canvas.addEventListener("mousedown", (e) => {
     isDragging = true;
-    prevMouseX = e.clientX;
-    prevMouseY = e.clientY;
+    prevX = e.clientX;
+    prevY = e.clientY;
   });
 
   window.addEventListener("mouseup", () => {
@@ -161,99 +185,90 @@ function init3DParametricCanvas() {
 
   window.addEventListener("mousemove", (e) => {
     if (!isDragging) return;
-    const deltaX = e.clientX - prevMouseX;
-    const deltaY = e.clientY - prevMouseY;
-    prevMouseX = e.clientX;
-    prevMouseY = e.clientY;
+    const dx = e.clientX - prevX;
+    const dy = e.clientY - prevY;
+    prevX = e.clientX;
+    prevY = e.clientY;
 
-    angleY += deltaX * 0.01;
-    angleX += deltaY * 0.01;
-    // Limitar inclinación en X
+    angleY += dx * 0.01;
+    angleX += dy * 0.01;
     angleX = Math.max(-0.6, Math.min(0.6, angleX));
   });
 
+  // Zoom por rueda
   canvas.addEventListener("wheel", (e) => {
     e.preventDefault();
     zoomScale += e.deltaY * -0.0015;
-    zoomScale = Math.max(0.5, Math.min(2.0, zoomScale));
+    zoomScale = Math.max(0.5, Math.min(1.8, zoomScale));
     sliderScale.value = zoomScale;
+    scaleReadout.textContent = `${zoomScale.toFixed(2)}x`;
   });
 
-  // Geometría paramétrica del Poporo Quimbaya: perfil de revolución
-  // Generamos puntos (y, radius) a lo largo del eje central
-  function getPoporoProfile() {
-    const steps = 70;
-    const profile = [];
-    const height = 300; // altura total gráfica
+  // Modelo Matemático del Poporo (Curvas de revolución Quimbayas)
+  function createProfile() {
+    const steps = 75;
+    const list = [];
+    const height = 310;
 
     for (let i = 0; i <= steps; i++) {
-      const t = i / steps; // 0 (superior) a 1 (base)
-      const y = (t - 0.5) * height; // centrado en Y
-
+      const t = i / steps; // 0 a 1
+      const y = (t - 0.5) * height;
       let r = 0;
-      if (t < 0.05) {
-        // Boca y cuello superior
-        r = 16 + (t / 0.05) * 6;
-      } else if (t >= 0.05 && t < 0.38) {
-        // Esfera / bulbo superior
-        const localT = (t - 0.05) / 0.33; // 0 a 1
-        r = 22 + Math.sin(localT * Math.PI) * 44;
+
+      if (t < 0.04) {
+        r = 16 + (t / 0.04) * 5;
+      } else if (t >= 0.04 && t < 0.38) {
+        // Esfera superior
+        const local = (t - 0.04) / 0.34;
+        r = 21 + Math.sin(local * Math.PI) * 44;
       } else if (t >= 0.38 && t < 0.46) {
-        // Cuello / cintura ergonómica
-        const localT = (t - 0.38) / 0.08;
-        r = 30 - Math.sin(localT * Math.PI) * 7;
-      } else if (t >= 0.46 && t < 0.82) {
-        // Bulbo inferior cuatripartito
-        const localT = (t - 0.46) / 0.36;
-        r = 28 + Math.sin(localT * Math.PI) * 56;
-      } else if (t >= 0.82 && t <= 1.0) {
+        // Cintura ergonómica
+        const local = (t - 0.38) / 0.08;
+        r = 29 - Math.sin(local * Math.PI) * 6.5;
+      } else if (t >= 0.46 && t < 0.83) {
+        // Esfera inferior tetralobulada
+        const local = (t - 0.46) / 0.37;
+        r = 28 + Math.sin(local * Math.PI) * 57;
+      } else {
         // Pedestal y base cónica
-        const localT = (t - 0.82) / 0.18;
-        r = 30 + localT * 18;
+        const local = (t - 0.83) / 0.17;
+        r = 30 + local * 18;
       }
 
-      profile.push({ y, r });
+      list.push({ y, r });
     }
-    return profile;
+    return list;
   }
 
-  const profile = getPoporoProfile();
+  const profile = createProfile();
 
-  // Bucle de animación 60 FPS
-  function renderLoop() {
+  // Bucle de animación
+  function loop() {
     if (autoRotate && !isDragging) {
-      angleY += 0.012;
+      angleY += 0.01;
     }
-
-    drawScene();
-    requestAnimationFrame(renderLoop);
+    renderScene();
+    requestAnimationFrame(loop);
   }
 
-  function drawScene() {
-    // Redimensionar canvas manteniendo aspect ratio
-    const width = canvas.width = canvas.parentElement.clientWidth;
-    const height = canvas.height = canvas.parentElement.clientHeight;
+  function renderScene() {
+    const w = canvas.width = canvas.parentElement.clientWidth;
+    const h = canvas.height = canvas.parentElement.clientHeight;
 
-    ctx.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, w, h);
 
-    const centerX = width / 2;
-    const centerY = height / 2 + 10;
-    const baseScale = (Math.min(width, height) / 380) * zoomScale;
+    const cx = w / 2;
+    const cy = h / 2 + 12;
+    const scale = (Math.min(w, h) / 380) * zoomScale;
 
-    // Dirección de la luz
-    const lightRad = (lightAngleDeg * Math.PI) / 180;
-    const lightDir = {
-      x: Math.cos(lightRad),
-      y: -0.4,
-      z: Math.sin(lightRad)
-    };
-    // Normalizar vector luz
-    const lightLen = Math.hypot(lightDir.x, lightDir.y, lightDir.z);
-    lightDir.x /= lightLen;
-    lightDir.y /= lightLen;
-    lightDir.z /= lightLen;
+    // Vector de luz solar normalizado
+    const lRad = (lightAngleDeg * Math.PI) / 180;
+    const lx = Math.cos(lRad);
+    const ly = -0.4;
+    const lz = Math.sin(lRad);
+    const lLen = Math.hypot(lx, ly, lz);
+    const lightDir = { x: lx / lLen, y: ly / lLen, z: lz / lLen };
 
-    // Calcular mallas poligonales en 3D
     const segments = wireResolution;
     const rings = profile.length;
     const grid = [];
@@ -264,56 +279,52 @@ function init3DParametricCanvas() {
 
       for (let j = 0; j <= segments; j++) {
         const phi = (j / segments) * Math.PI * 2 + angleY;
-        
-        // Modulación cuatripartita en la esfera inferior
-        let radiusMod = r;
-        if (i > 30 && i < 58) {
-          // 4 lóbulos Quimbaya
-          const lobeWave = Math.cos(phi * 4) * 3.5;
-          radiusMod += lobeWave;
+
+        // Modulación de 4 lóbulos sagrados
+        let modR = r;
+        if (i > 32 && i < 62) {
+          modR += Math.cos(phi * 4) * 3.8;
         }
 
-        // Posición tridimensional original
-        let px = radiusMod * Math.cos(phi);
+        let px = modR * Math.cos(phi);
         let py = y;
-        let pz = radiusMod * Math.sin(phi);
+        let pz = modR * Math.sin(phi);
 
-        // Rotar alrededor de X (inclinación cenital)
+        // Rotación inclinación X
         const cosX = Math.cos(angleX);
         const sinX = Math.sin(angleX);
         const pyRot = py * cosX - pz * sinX;
         const pzRot = py * sinX + pz * cosX;
 
-        // Proyección ortográfica / perspectiva suave
-        const perspective = 700 / (700 + pzRot);
-        const screenX = centerX + px * baseScale * perspective;
-        const screenY = centerY + pyRot * baseScale * perspective;
+        // Proyección de cámara suave
+        const perspective = 750 / (750 + pzRot);
+        const sx = cx + px * scale * perspective;
+        const sy = cy + pyRot * scale * perspective;
 
         ring.push({
-          x: screenX,
-          y: screenY,
+          x: sx,
+          y: sy,
           z: pzRot,
           nx: Math.cos(phi),
-          ny: 0,
           nz: Math.sin(phi)
         });
       }
       grid.push(ring);
     }
 
-    // Dibujar sombra en el suelo
+    // Sombra en base con degradado suave
     ctx.save();
     ctx.beginPath();
-    ctx.ellipse(centerX, centerY + 160 * baseScale, 75 * baseScale, 20 * baseScale, 0, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(0, 0, 0, 0.45)";
-    ctx.filter = "blur(10px)";
+    ctx.ellipse(cx, cy + 165 * scale, 80 * scale, 22 * scale, 0, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(0, 0, 0, 0.55)";
+    ctx.filter = "blur(12px)";
     ctx.fill();
     ctx.restore();
 
-    // Dibujar aguja ceremonial / alfiler
-    drawPin(centerX, centerY, baseScale);
+    // Renderizar Alfiler Ceremonial
+    renderPin(cx, cy, scale);
 
-    // Dibujar cuadriláteros / anillos
+    // Renderizar mallas
     for (let i = 0; i < rings - 1; i++) {
       for (let j = 0; j < segments; j++) {
         const p1 = grid[i][j];
@@ -321,7 +332,6 @@ function init3DParametricCanvas() {
         const p3 = grid[i + 1][j + 1];
         const p4 = grid[i + 1][j];
 
-        // Backface culling en modo oro
         const avgZ = (p1.z + p2.z + p3.z + p4.z) / 4;
         const isBack = avgZ < 0;
 
@@ -332,7 +342,7 @@ function init3DParametricCanvas() {
           ctx.lineTo(p3.x, p3.y);
           ctx.lineTo(p4.x, p4.y);
           ctx.closePath();
-          ctx.strokeStyle = isBack ? "rgba(245, 194, 66, 0.15)" : "rgba(245, 194, 66, 0.75)";
+          ctx.strokeStyle = isBack ? "rgba(245, 194, 66, 0.12)" : "rgba(245, 194, 66, 0.75)";
           ctx.lineWidth = 0.8;
           ctx.stroke();
         } else if (renderMode === "xray") {
@@ -342,21 +352,21 @@ function init3DParametricCanvas() {
           ctx.lineTo(p3.x, p3.y);
           ctx.lineTo(p4.x, p4.y);
           ctx.closePath();
-          ctx.fillStyle = isBack ? "rgba(20, 160, 220, 0.05)" : "rgba(20, 180, 240, 0.15)";
+          ctx.fillStyle = isBack ? "rgba(14, 165, 233, 0.05)" : "rgba(14, 165, 233, 0.18)";
           ctx.fill();
-          ctx.strokeStyle = "rgba(100, 220, 255, 0.35)";
+          ctx.strokeStyle = "rgba(56, 189, 248, 0.35)";
           ctx.lineWidth = 0.5;
           ctx.stroke();
         } else {
-          // Modo Oro Realista con sombreado de Lambert
-          if (isBack) continue; // Culling para sólidos
+          // Oro Realista Bruñido con iluminación Lambertiana
+          if (isBack) continue;
 
-          const dotLight = Math.max(0.1, (p1.nx * lightDir.x + p1.nz * lightDir.z));
-          const brightness = Math.min(1, dotLight * 1.3);
+          const dot = Math.max(0.12, (p1.nx * lightDir.x + p1.nz * lightDir.z));
+          const brightness = Math.min(1, dot * 1.35);
 
-          const rCol = Math.round(180 + brightness * 75);
-          const gCol = Math.round(130 + brightness * 95);
-          const bCol = Math.round(30 + brightness * 50);
+          const r = Math.round(185 + brightness * 70);
+          const g = Math.round(135 + brightness * 90);
+          const b = Math.round(30 + brightness * 50);
 
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
@@ -364,26 +374,26 @@ function init3DParametricCanvas() {
           ctx.lineTo(p3.x, p3.y);
           ctx.lineTo(p4.x, p4.y);
           ctx.closePath();
-          ctx.fillStyle = `rgb(${rCol}, ${gCol}, ${bCol})`;
+          ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
           ctx.fill();
-          ctx.strokeStyle = `rgba(${rCol + 20}, ${gCol + 20}, ${bCol}, 0.2)`;
-          ctx.lineWidth = 0.3;
+          ctx.strokeStyle = `rgba(${r + 15}, ${g + 15}, ${b}, 0.25)`;
+          ctx.lineWidth = 0.35;
           ctx.stroke();
         }
       }
     }
   }
 
-  function drawPin(cx, cy, scale) {
-    const pinTopY = cy - 220 * scale;
-    const pinBotY = cy + 50 * scale;
+  function renderPin(cx, cy, scale) {
+    const pinTop = cy - 230 * scale;
+    const pinBot = cy + 45 * scale;
 
     ctx.save();
     ctx.beginPath();
-    ctx.moveTo(cx - 2 * scale, pinBotY);
-    ctx.lineTo(cx - 2 * scale, pinTopY);
-    ctx.lineTo(cx + 2 * scale, pinTopY);
-    ctx.lineTo(cx + 2 * scale, pinBotY);
+    ctx.moveTo(cx - 2.5 * scale, pinBot);
+    ctx.lineTo(cx - 2.5 * scale, pinTop);
+    ctx.lineTo(cx + 2.5 * scale, pinTop);
+    ctx.lineTo(cx + 2.5 * scale, pinBot);
     ctx.closePath();
 
     if (renderMode === "wire") {
@@ -391,26 +401,26 @@ function init3DParametricCanvas() {
       ctx.lineWidth = 1;
       ctx.stroke();
     } else if (renderMode === "xray") {
-      ctx.fillStyle = "rgba(100, 240, 255, 0.5)";
+      ctx.fillStyle = "rgba(56, 189, 248, 0.5)";
       ctx.fill();
     } else {
-      const grad = ctx.createLinearGradient(cx - 2, 0, cx + 2, 0);
-      grad.addColorStop(0, "#c49015");
-      grad.addColorStop(0.5, "#fff8d6");
-      grad.addColorStop(1, "#8a5800");
+      const grad = ctx.createLinearGradient(cx - 3, 0, cx + 3, 0);
+      grad.addColorStop(0, "#b87c08");
+      grad.addColorStop(0.4, "#fff7c2");
+      grad.addColorStop(1, "#7d4d03");
       ctx.fillStyle = grad;
       ctx.fill();
 
-      // Esfera cabezal del alfiler
+      // Esfera superior del alfiler
       ctx.beginPath();
-      ctx.arc(cx, pinTopY, 6 * scale, 0, Math.PI * 2);
-      ctx.fillStyle = "#ffe066";
-      ctx.shadowColor = "rgba(245, 194, 66, 0.8)";
-      ctx.shadowBlur = 12;
+      ctx.arc(cx, pinTop, 7 * scale, 0, Math.PI * 2);
+      ctx.fillStyle = "#ffe680";
+      ctx.shadowColor = "rgba(245, 194, 66, 0.9)";
+      ctx.shadowBlur = 14;
       ctx.fill();
     }
     ctx.restore();
   }
 
-  renderLoop();
+  loop();
 }

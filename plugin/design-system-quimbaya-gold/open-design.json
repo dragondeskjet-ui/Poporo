@@ -1,0 +1,36 @@
+{
+  "$schema": "https://open-design.ai/schemas/plugin.v1.json",
+  "specVersion": "1.0.0",
+  "name": "design-system-quimbaya-gold",
+  "title": "Quimbaya Gold Heritage",
+  "title_i18n": {
+    "es": "Orfebrería Quimbaya Gold",
+    "en": "Quimbaya Gold Heritage"
+  },
+  "version": "1.0.0",
+  "publishedAt": "2026-10-09T02:30:00Z",
+  "description": "Pre-Columbian goldwork & high-end museum aesthetic. Burnished gold, obsidian black, and ceremonial terracotta for historical storytelling and parametric hardware.",
+  "description_i18n": {
+    "es": "Estética museográfica de alta fidelidad inspirada en la orfebrería precolombina. Oro bruñido, negro obsidiana y terracota ceremonial para narrativa histórica y hardware abierto.",
+    "en": "Pre-Columbian goldwork & high-end museum aesthetic. Burnished gold, obsidian black, and ceremonial terracotta for historical storytelling and parametric hardware."
+  },
+  "license": "Apache-2.0",
+  "tags": ["design-system", "heritage", "museum", "goldwork", "open-hardware", "dark-mode"],
+  "compat": {
+    "agentSkills": [
+      {
+        "path": "./DESIGN.md"
+      }
+    ]
+  },
+  "od": {
+    "kind": "design-system",
+    "designSystem": {
+      "ref": "quimbaya-gold",
+      "primary": true
+    },
+    "assets": [
+      "./DESIGN.md"
+    ]
+  }
+}
