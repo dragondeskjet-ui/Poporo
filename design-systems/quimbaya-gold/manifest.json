@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "od-design-system-project/v1",
+  "id": "quimbaya-gold",
+  "name": "Quimbaya Gold",
+  "category": "Heritage & Luxury Hardware",
+  "description": "Museum-grade design system derived from Pre-Columbian metallurgy (300-800 CE). Obsidian vault dark surface, gold tumbaga palette, and high-fidelity 3D parametric hardware rendering.",
+  "source": {
+    "type": "project-local",
+    "origin": "Poporo Open Design Workspace"
+  },
+  "files": {
+    "design": "DESIGN.md",
+    "tokens": "tokens.css",
+    "designTokens": "design-tokens.json"
+  },
+  "craft": {
+    "applies": ["typography", "color", "anti-ai-slop"],
+    "suggested": ["color", "accessibility-baseline"]
+  }
+}

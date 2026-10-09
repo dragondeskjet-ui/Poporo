@@ -1,0 +1,20 @@
+{
+  "id": "poporo-showcase",
+  "title": "El Poporo Quimbaya - Open Design Project",
+  "designSystem": "quimbaya-gold",
+  "skill": "poporo-agent",
+  "mode": "prototype",
+  "status": "ready",
+  "files": [
+    "index.html",
+    "css/styles.css",
+    "js/main.js",
+    "data/open-design-spec.json",
+    "docs/OPEN_DESIGN_SPEC.md"
+  ],
+  "provenance": {
+    "generator": "open-design-workspace",
+    "upstream": "https://github.com/nexu-io/open-design",
+    "license": "Apache-2.0 / CC-BY-SA-4.0"
+  }
+}
