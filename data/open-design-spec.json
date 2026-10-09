@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project": "Poporo Quimbaya Open Design Initiative",
+  "version": "1.0.0",
+  "license": "CC-BY-SA 4.0 / Open Hardware Design",
+  "object": {
+    "name": "Poporo Quimbaya Clásico",
+    "culture": "Cultura Quimbaya (Periodo Clásico, c. 300 - 800 d.C.)",
+    "location_origin": "Región del Cauca Medio / Valle del Río Cauca, Colombia",
+    "current_location": "Museo del Oro, Banco de la República, Bogotá (Pieza No. 00001)",
+    "function": "Recipiente ceremonial para cal / calero usado en el ritual del mambeo de hoja de coca"
+  },
+  "dimensions": {
+    "total_height_mm": 235,
+    "max_diameter_mm": 114,
+    "weight_grams": 777.7,
+    "metal_composition": {
+      "gold_percentage": 82.5,
+      "copper_percentage": 13.8,
+      "silver_percentage": 3.7,
+      "alloy_name": "Tumbaga dorada por enriquecimiento superficial (mise en couleur)"
+    }
+  },
+  "anatomy_modules": [
+    {
+      "id": "sphere_upper",
+      "name": "Cuerpo Esferoidal Superior",
+      "function": "Módulo de resonancia visual y cierre superior",
+      "technique": "Cera perdida con núcleo de arcilla y carbón vegetal",
+      "proportions": "Proporción áurea respecto al cuello central"
+    },
+    {
+      "id": "central_waist",
+      "name": "Cintura / Estrechamiento Central",
+      "function": "Zona ergonómica de sujeción manual para ritual continuo",
+      "technique": "Unión continua en vaciado único",
+      "proportions": "Punto de inflexión harmónico"
+    },
+    {
+      "id": "sphere_lower",
+      "name": "Cuerpo Esferoidal Inferior",
+      "function": "Cámara principal de almacenamiento de cal dolomítica / concha calcinada",
+      "technique": "Vaciado continuo de tumbaga con espesor de pared de 1.8mm a 2.4mm",
+      "proportions": "Volumen calibrado para equilibrio del centro de gravedad"
+    },
+    {
+      "id": "base_pedestal",
+      "name": "Pedestal Anular de Apoyo",
+      "function": "Estabilidad sobre superficies llanas y descanso ritual",
+      "technique": "Modelado por torsión geométrica y pulido fino",
+      "proportions": "Diámetro base 68mm"
+    },
+    {
+      "id": "poporo_pin",
+      "name": "Alfiler Ceremonial o Palillo",
+      "function": "Extracción precisa de cal para activación alcalina de alcaloides de la coca",
+      "technique": "Fundición en cera con remate zoomorfo/antropomorfo estilizado",
+      "proportions": "Longitud 240mm, vástago de 3mm"
+    }
+  ],
+  "open_design_philosophy": {
+    "core_principles": [
+      {
+        "title": "Patrimonio Abierto y Acceso Común",
+        "description": "El conocimiento milenario de metalurgia y cosmovisión indígena pertenece a la memoria colectiva de la humanidad."
+      },
+      {
+        "title": "Modularidad y Parametrización Digital",
+        "description": "Traducción de las curvas del Poporo a modelos 3D matemáticos, STL/STEP listos para fabricación digital, impresión 3D y mecanizado CNC."
+      },
+      {
+        "title": "Sostenibilidad de Materiales",
+        "description": "Exploración de biomateriales, filamentos reciclados y aleaciones no extractivistas preservando la geometría bioclimática y ritual."
+      },
+      {
+        "title": "Documentación FOSS y Reproducibilidad",
+        "description": "Planos vectoriales (SVG), código abierto, especificaciones técnicas y canalización CI/CD automatizada vía GitHub Actions."
+      }
+    ]
+  }
+}

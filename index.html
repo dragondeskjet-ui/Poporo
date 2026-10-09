@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Poporo Quimbaya | Open Design & Cultura Ancestral</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Google Fonts: Space Grotesk, Syne & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header / Navigation Bar -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="brand">
+        <span class="brand-badge">OPEN DESIGN</span>
+        <span class="brand-title">POPORO QUIMBAYA</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#hero">Inicio</a>
+        <a href="#history">Historia</a>
+        <a href="#anatomy">Anatomía</a>
+        <a href="#interactive-3d">Simulador 3D</a>
+        <a href="#open-design">Diseño Abierto</a>
+        <a href="#cicd">GitHub Actions</a>
+        <a href="https://github.com/dragondeskjet-ui/Poporo" target="_blank" class="github-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          Repo GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="hero-background-glow"></div>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="pill-tag">🏛️ Patrimonio Precolombino × Código Libre</div>
+          <h1 class="hero-title">El Poporo Quimbaya en la Era del <span class="gold-gradient-text">Open Design</span></h1>
+          <p class="hero-subtitle">
+            Una reinterpretación contemporánea de la obra maestra orfebre de Colombia (300–800 d.C.). 
+            Parámetros matemáticos, geometría sagrada, fabricación digital distribuida y entrega continua con <strong>GitHub Actions</strong>.
+          </p>
+          <div class="hero-actions">
+            <a href="#interactive-3d" class="btn btn-primary">Explorar Modelo 3D Interactivo</a>
+            <a href="#open-design" class="btn btn-secondary">Filosofía Open Design</a>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <span class="metric-val">235 mm</span>
+              <span class="metric-label">Altura Exacta</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-val">777.7 g</span>
+              <span class="metric-label">Masa en Tumbaga</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-val">100% FOSS</span>
+              <span class="metric-label">Acceso Libre CC BY-SA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="model-preview-container">
+            <div class="orbit-circle ring-outer"></div>
+            <div class="orbit-circle ring-inner"></div>
+            <!-- Canvas o SVG interactivo de alta fidelidad -->
+            <svg id="hero-poporo-svg" viewBox="0 0 300 420" class="hero-poporo-graphic">
+              <defs>
+                <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fff2a8" />
+                  <stop offset="30%" stop-color="#f5c242" />
+                  <stop offset="70%" stop-color="#d49215" />
+                  <stop offset="100%" stop-color="#8a5303" />
+                </linearGradient>
+                <linearGradient id="goldSpec" x1="0%" y1="50%" x2="100%" y2="50%">
+                  <stop offset="0%" stop-color="#e2a829" />
+                  <stop offset="50%" stop-color="#fff8db" />
+                  <stop offset="100%" stop-color="#a66e0a" />
+                </linearGradient>
+                <filter id="glowGold" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="8" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              <!-- Poporo Vector Shape -->
+              <!-- Alfiler / Palillo ceremonial -->
+              <rect x="147" y="15" width="6" height="150" rx="3" fill="url(#goldSpec)" />
+              <circle cx="150" cy="18" r="9" fill="url(#goldShine)" filter="url(#glowGold)"/>
+              
+              <!-- Esfera Superior -->
+              <ellipse cx="150" cy="140" rx="58" ry="46" fill="url(#goldShine)" class="poporo-part part-top" />
+              <!-- Cintura / Estrechamiento -->
+              <path d="M 108 155 C 130 190, 170 190, 192 155 C 185 205, 115 205, 108 155 Z" fill="url(#goldSpec)" opacity="0.95" />
+              <!-- Esfera Inferior Cuatripartita -->
+              <path d="M 90 205 C 75 235, 75 270, 96 300 C 120 325, 180 325, 204 300 C 225 270, 225 235, 210 205 C 180 230, 120 230, 90 205 Z" fill="url(#goldShine)" class="poporo-part part-bottom" />
+              <!-- Protuberancias / Lóbulos característicos -->
+              <ellipse cx="118" cy="255" rx="24" ry="32" fill="url(#goldSpec)" opacity="0.8" />
+              <ellipse cx="182" cy="255" rx="24" ry="32" fill="url(#goldSpec)" opacity="0.8" />
+              <!-- Base cónica / pedestal anular -->
+              <path d="M 115 315 L 98 355 C 98 368, 202 368, 202 355 L 185 315 Z" fill="url(#goldShine)" class="poporo-part part-base" />
+              <ellipse cx="150" cy="358" rx="52" ry="12" fill="url(#goldSpec)" />
+            </svg>
+            <div class="floating-badge badge-top">Esfera Simbólica Superior</div>
+            <div class="floating-badge badge-mid">Ergonomía Ancestral</div>
+            <div class="floating-badge badge-bot">Cuerpo Cuatripartito</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORIA Y CONTEXTO CULTURAL -->
+    <section id="history" class="section history-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">MEMORIA Y ARQUEOLOGÍA</span>
+          <h2 class="section-title">El Resplandor del Cauca Medio</h2>
+          <p class="section-desc">
+            Fundador del Museo del Oro y símbolo de la identidad de Colombia, el Poporo Quimbaya es una síntesis de arte, botánica sagrada y cosmovisión indígena.
+          </p>
+        </div>
+
+        <div class="timeline-grid">
+          <article class="timeline-card">
+            <div class="card-icon">🔥</div>
+            <span class="timeline-epoch">300 – 800 d.C.</span>
+            <h3>Periodo Quimbaya Clásico</h3>
+            <p>
+              Maestros metalúrgicos del Valle del Río Cauca crearon objetos suntuarios mediante aleaciones de oro y cobre (*tumbaga*). 
+              Su acabado dorado no era simple adorno, sino manifestación de la luz solar y la energía vital.
+            </p>
+          </article>
+
+          <article class="timeline-card highlighted">
+            <div class="card-icon">🌿</div>
+            <span class="timeline-epoch">Ritual Sagrado</span>
+            <h3>El Mambeo y la Cal</h3>
+            <p>
+              El Poporo servía de contenedor para la cal viva (*dolomita* o conchas marinas calcinadas). 
+              Al mezclarla con hojas de coca trituradas, la reacción química alcalina libera los principios activos para el diálogo, la concentración y la toma de decisiones comunitarias.
+            </p>
+          </article>
+
+          <article class="timeline-card">
+            <div class="card-icon">🏛️</div>
+            <span class="timeline-epoch">1939 – Presente</span>
+            <h3>Pieza 00001 del Museo del Oro</h3>
+            <p>
+              Adquirido por el Banco de la República tras ser encontrado en 1930 en Yarumal, Antioquia. 
+              Esta adquisición marcó el nacimiento formal de la mayor colección de orfebrería prehispánica del planeta.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANATOMÍA INTERACTIVA -->
+    <section id="anatomy" class="section anatomy-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">INGENIERÍA Y DISEÑO</span>
+          <h2 class="section-title">Desglose Anatómico del Poporo</h2>
+          <p class="section-desc">Selecciona cada segmento para examinar sus secretos de diseño, técnica de fundición y función ceremonial.</p>
+        </div>
+
+        <div class="anatomy-grid">
+          <div class="anatomy-controls">
+            <button class="anatomy-btn active" data-target="sphere-up">
+              <span class="btn-num">01</span>
+              <div class="btn-text">
+                <strong>Cuerpo Esférico Superior</strong>
+                <small>Remate y resonancia estética</small>
+              </div>
+            </button>
+            <button class="anatomy-btn" data-target="waist">
+              <span class="btn-num">02</span>
+              <div class="btn-text">
+                <strong>Cintura de Sujeción</strong>
+                <small>Ergonomía de agarre palmar</small>
+              </div>
+            </button>
+            <button class="anatomy-btn" data-target="sphere-down">
+              <span class="btn-num">03</span>
+              <div class="btn-text">
+                <strong>Receptáculo Cuatripartito</strong>
+                <small>Cámara de cal dolomítica</small>
+              </div>
+            </button>
+            <button class="anatomy-btn" data-target="pedestal">
+              <span class="btn-num">04</span>
+              <div class="btn-text">
+                <strong>Pedestal de Apoyo</strong>
+                <small>Base geométrica calibrada</small>
+              </div>
+            </button>
+            <button class="anatomy-btn" data-target="pin">
+              <span class="btn-num">05</span>
+              <div class="btn-text">
+                <strong>Alfiler Ceremonial</strong>
+                <small>Varilla dosificadora ritual</small>
+              </div>
+            </button>
+          </div>
+
+          <div class="anatomy-display-panel" id="anatomy-details-panel">
+            <div class="panel-header">
+              <span class="badge" id="anatomy-badge">Módulo 01</span>
+              <h3 id="anatomy-title">Cuerpo Esférico Superior</h3>
+            </div>
+            <div class="panel-body">
+              <p id="anatomy-desc">
+                Constituye la porción superior del vaso. Presenta una curvatura matemática perfecta que evoca las formas de calabazas secas (*totumos*) utilizadas como caleros vegetales primigenios. Fue fundido mediante la técnica de cera perdida sobre un núcleo refractario central.
+              </p>
+              <div class="specs-mini-grid">
+                <div class="spec-item">
+                  <span class="spec-label">Diámetro medio:</span>
+                  <span class="spec-value" id="anatomy-spec1">102 mm</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Espesor pared:</span>
+                  <span class="spec-value" id="anatomy-spec2">1.9 – 2.2 mm</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Técnica:</span>
+                  <span class="spec-value" id="anatomy-spec3">Cera perdida (núcleo arcilla)</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Equivalente Open CAD:</span>
+                  <span class="spec-value" id="anatomy-spec4">Malla NURBS esferoidal</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIMULADOR 3D INTERACTIVO CON CANVAS PARAMÉTRICO -->
+    <section id="interactive-3d" class="section canvas-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">LABORATORIO DIGITAL</span>
+          <h2 class="section-title">Simulador Paramétrico 3D / Wireframe</h2>
+          <p class="section-desc">
+            Interactúa con la geometría en tiempo real. Rota la pieza, ajusta el ángulo de iluminación y visualiza la estructura poligonal de Open Design.
+          </p>
+        </div>
+
+        <div class="canvas-interactive-wrapper">
+          <div class="canvas-toolbar">
+            <div class="toolbar-group">
+              <label>Modo de Render:</label>
+              <button class="mode-btn active" id="btn-mode-gold">✨ Oro Realista</button>
+              <button class="mode-btn" id="btn-mode-wire">🌐 Wireframe CAD</button>
+              <button class="mode-btn" id="btn-mode-xray">🔬 Sección Rayos X</button>
+            </div>
+            <div class="toolbar-group">
+              <label>Giro Automático:</label>
+              <button class="ctrl-toggle" id="btn-toggle-rotate">⏸ Pausar Giro</button>
+            </div>
+          </div>
+
+          <div class="canvas-container">
+            <canvas id="poporoCanvas" width="900" height="580"></canvas>
+            <div class="canvas-overlay-tip">
+              <span>🖱️ Arrastra con el ratón para rotar en 3D | Rueda para zoom</span>
+            </div>
+          </div>
+
+          <div class="slider-controls-row">
+            <div class="slider-item">
+              <label for="slider-scale">Escala Geometría (Zoom):</label>
+              <input type="range" id="slider-scale" min="0.6" max="1.5" step="0.05" value="1.0">
+            </div>
+            <div class="slider-item">
+              <label for="slider-light">Ángulo de Iluminación Solar:</label>
+              <input type="range" id="slider-light" min="0" max="360" step="5" value="45">
+            </div>
+            <div class="slider-item">
+              <label for="slider-wire-density">Resolución Malla Poligonal:</label>
+              <input type="range" id="slider-wire-density" min="16" max="64" step="4" value="36">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPEN DESIGN: FILOSOFÍA Y FABRICACIÓN -->
+    <section id="open-design" class="section open-design-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">OPEN HARDWARE & FABLAB</span>
+          <h2 class="section-title">El Manifiesto Open Design del Poporo</h2>
+          <p class="section-desc">
+            Democratizar el acceso a bienes arqueológicos mediante planos libres, formatos abiertos y fabricación digital descentralizada.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="f-icon">📐</div>
+            <h3>Parámetros Abiertos (CAD/STL)</h3>
+            <p>
+              Conversión de los volúmenes en primitivas matemáticas reproducibles en FreeCAD, Blender y OpenSCAD.
+              Archivos limpios, con mallas manifolds sin aristas no-múltiples listos para laminación.
+            </p>
+            <a href="data/open-design-spec.json" target="_blank" class="card-link">Ver open-design-spec.json →</a>
+          </div>
+
+          <div class="feature-card">
+            <div class="f-icon">🖨️</div>
+            <h3>Fabricación Aditiva 3D</h3>
+            <p>
+              Instrucciones y perfiles de impresión optimizados para filamento biodegradable PLA infusionado con polvo metálico de latón/cobre, o resina fotosensible para acabados museográficos.
+            </p>
+            <a href="docs/OPEN_DESIGN_SPEC.md" class="card-link">Leer Guía Técnica →</a>
+          </div>
+
+          <div class="feature-card">
+            <div class="f-icon">⚖️</div>
+            <h3>Licencia Creative Commons</h3>
+            <p>
+              Protegido bajo <strong>CC BY-SA 4.0</strong>. Cualquier escuela, museo comunitario o investigador puede descargar, modificar, imprimir y difundir el diseño sin restricciones comerciales abusivas.
+            </p>
+            <span class="badge-pill">Copyleft Patrimonial</span>
+          </div>
+
+          <div class="feature-card">
+            <div class="f-icon">🌍</div>
+            <h3>Preservación e Inclusión</h3>
+            <p>
+              Permite que personas con discapacidad visual toquen y reconozcan la volumetría de una de las mayores joyas de América Latina a través de modelos táctiles 1:1.
+            </p>
+            <span class="badge-pill">Accesibilidad Táctil</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIPELINE CI/CD & GITHUB ACTIONS -->
+    <section id="cicd" class="section cicd-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">DEVOPS & CONTINUOUS DELIVERY</span>
+          <h2 class="section-title">Automatizado con GitHub Actions</h2>
+          <p class="section-desc">
+            Cada cambio en el diseño, código y especificaciones se valida y despliega en producción a través de pipelines automatizados.
+          </p>
+        </div>
+
+        <div class="cicd-flow-box">
+          <div class="cicd-steps">
+            <div class="cicd-step">
+              <div class="step-circle">1</div>
+              <h4>Git Push / PR</h4>
+              <p>Cambios en ramas <code>main</code> disparan el webhook de GitHub.</p>
+            </div>
+            <div class="cicd-connector">➔</div>
+            <div class="cicd-step">
+              <div class="step-circle">2</div>
+              <h4>Lint & Validación</h4>
+              <p>Valida esquemas JSON, enlaces de assets y estándares Open Design.</p>
+            </div>
+            <div class="cicd-connector">➔</div>
+            <div class="cicd-step">
+              <div class="step-circle">3</div>
+              <h4>Artifact Bundling</h4>
+              <p>Genera y empaqueta el artefacto estático web certificado.</p>
+            </div>
+            <div class="cicd-connector">➔</div>
+            <div class="cicd-step">
+              <div class="step-circle">4</div>
+              <h4>GitHub Pages CD</h4>
+              <p>Publicación instantánea en la CDN global HTTPS.</p>
+            </div>
+          </div>
+
+          <div class="code-preview-block">
+            <div class="code-header">
+              <span>.github/workflows/deploy.yml</span>
+              <span class="status-badge">⚡ Active Workflow</span>
+            </div>
+            <pre><code>name: Deploy Poporo Open Design Presentation to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  lint-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: test -f index.html && test -f data/open-design-spec.json
+  deploy:
+    needs: lint-and-validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/deploy-pages@v4</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <h3>Poporo Quimbaya Open Design</h3>
+        <p>Iniciativa de patrimonio libre, fabricación aditiva y divulgación cultural de América Precolombina.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="data/open-design-spec.json">Especificación JSON</a></li>
+          <li><a href="docs/OPEN_DESIGN_SPEC.md">Guía Documental</a></li>
+          <li><a href="https://github.com/dragondeskjet-ui/Poporo" target="_blank">Repositorio en GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tecnologías</h4>
+        <p>HTML5 Semántico • Canvas 3D Paramétrico • CSS Moderno • GitHub Actions CI/CD</p>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>© 2026 Iniciativa Abierta Poporo • Licenciado bajo CC BY-SA 4.0 • Desplegado automáticamente con GitHub Actions</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
